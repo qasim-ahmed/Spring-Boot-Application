@@ -11,5 +11,19 @@ Below are the steps to dockerize the application.
 6. Finally run the command docker run -p 9090:8080 --name appcontainer --net app-network -e MYSQL_HOST=mysqldb -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_PORT=3306 springbootapp
 
 
+# ScreenShots
+![image](https://user-images.githubusercontent.com/105868063/183118301-685f65bc-6396-4ffd-b6db-9beb473ea534.png)
+
+----------------------------------------------------------------------------------------------------------------
+
+![image](https://user-images.githubusercontent.com/105868063/183118460-6a88aefd-291c-42bc-b88c-4c7cff67527f.png)
+
+----------------------------------------------------------------------------------------------------------------
+
+![image](https://user-images.githubusercontent.com/105868063/183118795-c280c415-fa76-450d-803f-eccf1fa6730d.png)
+
+----------------------------------------------------------------------------------------------------------------
+
+![image](https://user-images.githubusercontent.com/105868063/183118992-55c2a17b-0fe4-4ba4-9714-655b07e0749c.png)
 
 
