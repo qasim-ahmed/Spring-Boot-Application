@@ -15,37 +15,38 @@ public class PayrollService {
     Helper helper = new Helper();
     @Autowired
     EmployeeRepository employeeRepository;
-    @RequestMapping("/all")
+    @GetMapping("/employees")
     public List<Employees> getAllUsers() {
         return employeeRepository.findAll();
     }
 
-    @RequestMapping("/find-by-id")
-    public List<Employees> getSingleRecord(@RequestParam(required = true) Integer id) {
+    @GetMapping("/employees/{id}")
+    public List<Employees> getSingleRecord(@PathVariable Integer id) {
         List<Employees> employees =  employeeRepository.findAll();
         return helper.getEmployeeById(id, employees);
     }
 
-    @PostMapping("/add-employee")
+    @PostMapping("/employees/add-new")
     public List<Employees> addNewEmployee(@RequestBody Employees employee) {
         employeeRepository.save(employee);
         return getAllUsers();
     }
 
-    @PostMapping("/update-employee")
-    public List<Employees> updateEmployee(@RequestBody Employees employee) {
+    @PutMapping("/employees/{id}")
+    public List<Employees> updateEmployee(@RequestBody Employees employee, @PathVariable Integer id) {
         AtomicReference<Boolean> updated = new AtomicReference<>(false);
         employeeRepository
-                .findById(employee.getId())
+                .findById(id)
                 .ifPresent(user -> {
                     user.setName(employee.getName());
                     user.setRole(employee.getRole());
                     employeeRepository.save(user);
                     updated.set(true);
                 });
+
         if (updated.get()) {
             return getAllUsers();
         }
-        return helper.printErrorMessage(employee.getId());
+        return helper.printErrorMessage(id);
     }
 }

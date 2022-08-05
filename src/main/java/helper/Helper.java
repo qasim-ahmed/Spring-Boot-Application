@@ -9,7 +9,7 @@ public class Helper {
 
     public List<Employees> printErrorMessage(Integer id) {
         List<Employees> employee = new ArrayList<Employees>();
-        employee.add(new Employees(id, "Error", "Wrong value specified in query parameter and or body."));
+        employee.add(new Employees(id, "Error", "Wrong value specified in URI template variable and or body."));
         return employee;
     }
 
